@@ -7,7 +7,7 @@ your preferences.
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Installation](#installation)
+- [Building](#building)
 - [Usage](#usage)
 - [Options](#options)
 - [Examples](#examples)
@@ -23,7 +23,7 @@ uppercase letters, digits, and special characters). You can also use
 **passgen** without any options to generate a random password with default
 settings.
 
-## Installation
+## Building
 
 This tool is provided as source code and can be built using `make`. Here
 are the build instructions:
@@ -37,7 +37,7 @@ are the build instructions:
 2. Change the directory to the cloned repository:
 
    ```bash
-   cd unicon
+   cd passgen
    ```
 
 3. Build the tool using `make`:
