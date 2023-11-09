@@ -120,7 +120,7 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
     const string uppercase_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const string lowercase_letters = "abcdefghijklmnopqrstuvwxyz";
     const string digits = "0123456789";
-    const string special_chars = "!@#$%^&*()_= [{]}\\|;:'\",<.>?`~+-/*";
+    const string special_chars = "!@#$%^&*()_=[{]}\\|;:'\",<.>?`~+-/*";
 
     // Calculate the total number of characters based on user preferences
     unsigned int total_chars = 0;
