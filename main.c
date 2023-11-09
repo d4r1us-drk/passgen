@@ -1,7 +1,7 @@
 /* 
  * main.c
  *
- * Copyright 2023 Darius Drakeptime is 1 year
+ * Copyright 2023 Darius Drake
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
