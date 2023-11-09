@@ -25,7 +25,6 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <string.h>
-#include <time.h>
 
 #define VERSION 0.1
 #define NAME "passgen"
@@ -123,6 +122,12 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
     const string digits = "0123456789";
     const string special_chars = "!@#$%^&*()_= [{]}\\|;:'\",<.>?`~+-/*";
 
+    // Ensure at least one character from each set
+    if (!(wantsUpCase && wantsLowCase && wantsDigits && wantsSpecials)) {
+        fprintf(stderr, "Error: Please enable at least one character set for password generation.\n");
+        exit(1);
+    }
+
     // Calculate the total number of characters based on user preferences
     unsigned int total_chars = 0;
     if (wantsUpCase) total_chars += strlen(uppercase_letters);
@@ -136,10 +141,22 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
         exit(1);
     }
 
-    srand(time(NULL));
+    FILE *urandom = fopen("/dev/urandom", "rb");
+    if (urandom == NULL) {
+        fprintf(stderr, "Error: Unable to open /dev/urandom for random number generation.\n");
+        exit(1);
+    }
 
     for (unsigned int i = 0; i < length; i++) {
-        int char_set = rand() % total_chars;
+        unsigned char random_byte;
+        if (fread(&random_byte, sizeof(random_byte), 1, urandom) != 1) {
+            fprintf(stderr, "Error: Reading from /dev/urandom failed.\n");
+            fclose(urandom);
+            exit(1);
+        }
+
+        int char_set = random_byte % total_chars;
+
         if (wantsUpCase) {
             if (char_set < strlen(uppercase_letters)) {
                 password[i] = uppercase_letters[char_set];
@@ -166,6 +183,7 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
         }
     }
 
+    fclose(urandom);
     password[length] = '\0'; // Null-terminate the string
     return password;
 }
