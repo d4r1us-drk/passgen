@@ -1,4 +1,4 @@
-# Passgen
+# passgen - Password Generator Tool
 
 **passgen** is a command-line tool that simplifies password generation. It
 provides options for creating random passwords or customizing them based on
