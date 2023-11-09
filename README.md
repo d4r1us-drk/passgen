@@ -1,7 +1,8 @@
 # Passgen
 
-Passgen is a simple command-line utility for generating random passwords with
-various options.
+**passgen** is a command-line tool that simplifies password generation. It
+provides options for creating random passwords or customizing them based on
+your preferences.
 
 ## Table of Contents
 
@@ -15,11 +16,12 @@ various options.
 
 ## Introduction
 
-passgen is a password generation tool that allows you to create secure and
+**passgen** is a password generation tool that allows you to create secure and
 customizable passwords. It generates passwords based on user-specified
 criteria, including password length and character types (lowercase letters,
-uppercase letters, digits, and special characters). You can also use passgen
-without any options to generate a random password with default settings.
+uppercase letters, digits, and special characters). You can also use
+**passgen** without any options to generate a random password with default
+settings.
 
 ## Installation
 
@@ -58,7 +60,7 @@ passgen [OPTIONS]
 
 ## Options
 
-Passgen provides the following command-line options:
+**passgen** provides the following command-line options:
 
 - `-L`, `--length`:
   - Specify the length of the generated password. Default is 24 characters.
@@ -84,7 +86,7 @@ Passgen provides the following command-line options:
 
 ## Examples
 
-### Generate a default password:
+1. Generate a default password:
 
 ```bash
 passgen
@@ -93,7 +95,7 @@ passgen
 This will generate a 24-character password with a mix of lowercase letters,
 uppercase letters, digits, and special characters.
 
-### Generate a password with specific options:
+2. Generate a password with specific options:
 
 ```bash
 passgen -L 12 -lud
@@ -102,7 +104,7 @@ passgen -L 12 -lud
 This will generate a 12-character password with only lowercase letters,
 uppercase letters, digits, and no special characters.
 
-### Display help message:
+3. Display help message:
 
 ```bash
 passgen -h
@@ -110,7 +112,7 @@ passgen -h
 
 This will display the usage and available options.
 
-### Display version information:
+4. Display version:
 
 ```bash
 passgen -v

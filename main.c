@@ -197,8 +197,8 @@ void displayHelp() {
     printf("Generate passwords with ease.\n\n");
     printf("Options:\n");
     printf("\t-L, --length         Specify the length of the password.\n");
-    printf("\t-l, --lower-case     Enable lower case for the password.\n");
-    printf("\t-u, --upper-case     Enable upper case for the password.\n");
+    printf("\t-l, --lower-case     Enable lowercase for the password.\n");
+    printf("\t-u, --upper-case     Enable uppercase for the password.\n");
     printf("\t-d, --digits         Enable digits for the password.\n");
     printf("\t-s, --special        Enable special characters for the password.\n");
     printf("\t-h, --help           Display this help message and exit.\n");
