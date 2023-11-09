@@ -122,12 +122,6 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
     const string digits = "0123456789";
     const string special_chars = "!@#$%^&*()_= [{]}\\|;:'\",<.>?`~+-/*";
 
-    // Ensure at least one character from each set
-    if (!(wantsUpCase && wantsLowCase && wantsDigits && wantsSpecials)) {
-        fprintf(stderr, "Error: Please enable at least one character set for password generation.\n");
-        exit(1);
-    }
-
     // Calculate the total number of characters based on user preferences
     unsigned int total_chars = 0;
     if (wantsUpCase) total_chars += strlen(uppercase_letters);
