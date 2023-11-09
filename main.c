@@ -37,8 +37,7 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
 void displayHelp();
 void displayVersion();
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     int option;
     unsigned int length = 24;
     bool wantsUpCase   = false,
