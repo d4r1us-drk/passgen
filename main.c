@@ -33,7 +33,6 @@
 typedef char* string;
 
 // Function prototypes
-bool isNumeric(const char *str);
 string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase, bool wantsDigits, bool wantsSpecials);
 void displayHelp();
 void displayVersion();
@@ -117,25 +116,6 @@ int main(int argc, char **argv)
     printf("Password: %s\n", password);
 
     return 0;
-}
-
-// Function to check if the input is a non-negative integer
-bool isNumeric(const char *str) {
-    if (str == NULL || str[0] == '\0') {
-        return false;
-    }
-
-    int len = strlen(str);
-    int i = 0;
-
-    while (i < len) {
-        if (!isdigit(str[i])) {
-            return false;
-        }
-        i++;
-    }
-
-    return true;
 }
 
 string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase, bool wantsDigits, bool wantsSpecials) {
