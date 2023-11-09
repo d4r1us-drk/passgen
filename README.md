@@ -6,6 +6,7 @@ various options.
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Installation](#installation)
 - [Usage](#usage)
 - [Options](#options)
 - [Examples](#examples)
@@ -19,6 +20,32 @@ customizable passwords. It generates passwords based on user-specified
 criteria, including password length and character types (lowercase letters,
 uppercase letters, digits, and special characters). You can also use passgen
 without any options to generate a random password with default settings.
+
+## Installation
+
+This tool is provided as source code and can be built using `make`. Here
+are the build instructions:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/d4r1us-drk/passgen.git
+   ```
+
+2. Change the directory to the cloned repository:
+
+   ```bash
+   cd unicon
+   ```
+
+3. Build the tool using `make`:
+
+   ```bash
+   make
+   ```
+
+You should now have an executable named `passgen`. You can copy it to a
+location in your PATH for easy access.
 
 ## Usage
 
