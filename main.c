@@ -184,7 +184,7 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
 
 // Function to display the help message
 void displayHelp() {
-    printf("usage: passgen [OPTIONS]\n");
+    printf("Usage: %s [OPTIONS]\n", NAME);
     printf("Generate passwords with ease.\n\n");
     printf("Options:\n");
     printf("\t-L, --length         Specify the length of the password.\n");
