@@ -25,6 +25,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 
 #define VERSION 0.1
 #define NAME "passgen"
@@ -122,6 +123,9 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
     const string digits = "0123456789";
     const string special_chars = "!@#$%^&*()_=[{]}\\|;:'\",<.>?`~+-/*";
 
+    // Seed the random number generator with processor time
+    srand((unsigned int)clock());
+
     // Calculate the total number of characters based on user preferences
     unsigned int total_chars = 0;
     if (wantsUpCase) total_chars += strlen(uppercase_letters);
@@ -135,49 +139,35 @@ string generatePassword(unsigned int length, bool wantsUpCase, bool wantsLowCase
         exit(1);
     }
 
-    FILE *urandom = fopen("/dev/urandom", "rb");
-    if (urandom == NULL) {
-        fprintf(stderr, "Error: Unable to open /dev/urandom for random number generation.\n");
-        exit(1);
-    }
-
     for (unsigned int i = 0; i < length; i++) {
-        unsigned char random_byte;
-        if (fread(&random_byte, sizeof(random_byte), 1, urandom) != 1) {
-            fprintf(stderr, "Error: Reading from /dev/urandom failed.\n");
-            fclose(urandom);
-            exit(1);
-        }
-
-        int char_set = random_byte % total_chars;
+        int random_index = rand() % total_chars;
 
         if (wantsUpCase) {
-            if (char_set < strlen(uppercase_letters)) {
-                password[i] = uppercase_letters[char_set];
+            if (random_index < strlen(uppercase_letters)) {
+                password[i] = uppercase_letters[random_index];
                 continue;
             }
-            char_set -= strlen(uppercase_letters);
+            random_index -= strlen(uppercase_letters);
         }
         if (wantsLowCase) {
-            if (char_set < strlen(lowercase_letters)) {
-                password[i] = lowercase_letters[char_set];
+            if (random_index < strlen(lowercase_letters)) {
+                password[i] = lowercase_letters[random_index];
                 continue;
             }
-            char_set -= strlen(lowercase_letters);
+            random_index -= strlen(lowercase_letters);
         }
         if (wantsDigits) {
-            if (char_set < strlen(digits)) {
-                password[i] = digits[char_set];
+            if (random_index < strlen(digits)) {
+                password[i] = digits[random_index];
                 continue;
             }
-            char_set -= strlen(digits);
+            random_index -= strlen(digits);
         }
         if (wantsSpecials) {
-            password[i] = special_chars[char_set];
+            password[i] = special_chars[random_index];
         }
     }
 
-    fclose(urandom);
     password[length] = '\0'; // Null-terminate the string
     return password;
 }
